@@ -17,4 +17,8 @@ public class PlayerColect : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
+    public void Death()
+    {
+        Destroy(gameObject);
+    }
 }
