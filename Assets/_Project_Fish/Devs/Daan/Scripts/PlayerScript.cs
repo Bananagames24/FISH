@@ -5,8 +5,8 @@ public class PlayerScript : MonoBehaviour
 { 
     [Header("Player Movement")]
     [SerializeField] private float speed;
-    [SerializeField] private float gravity = -9.81f;
-    [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private float gravity = -20f;
+    [SerializeField] private float jumpForce = 3f;
     private bool jump = false;
 
     [Header("Character Controller")]
@@ -52,9 +52,23 @@ public class PlayerScript : MonoBehaviour
             velocity.y += gravity * Time.deltaTime;
         }
 
-        //makes the player move in all directions
-        //can only use m.controller.move 1 time in script or the character controller will bug with isgrounded
-        Vector3 move = direction * speed * Time.deltaTime + velocity * Time.deltaTime;
+        if (!characterController.isGrounded && speed >= 1f)
+        {
+            speed -= 5f * Time.deltaTime;
+        }
+        else
+        {
+            if(speed < 10f)
+            {
+                speed += 75f * Time.deltaTime;
+            }
+        }
+        
+        if (speed > 10f){ speed = 10f; }
+
+            //makes the player move in all directions
+            //can only use m.controller.move 1 time in script or the character controller will bug with isgrounded
+            Vector3 move = direction * speed * Time.deltaTime + velocity * Time.deltaTime;
         characterController.Move(move);
     }
 
