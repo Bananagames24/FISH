@@ -10,17 +10,16 @@ public class ButtonScript : MonoBehaviour
 
     public void MainMenuButton()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("StartMenu");
     }
 
     public void CreditsButton()
     {
-        SceneManager.LoadScene("Credits");
+        SceneManager.LoadScene("CreditsMenu");
     }
 
     public void ExitButton()
     {
         Application.Quit();
-        Debug.Log("Game is exiting");
     }
 }
