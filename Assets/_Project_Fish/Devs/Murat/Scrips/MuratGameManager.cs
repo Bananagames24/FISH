@@ -8,10 +8,7 @@ public class MuratGameManager : MonoBehaviour
     [SerializeField] private List<GameObject> MovePos;
     private float timer = 0.0f;
     private int om = 0;
-    private void Start()
-    {
-        
-    }
+    [SerializeField] private bool isDestroy;
     private void Update()
     {
         if (timer > 5f)
@@ -25,7 +22,7 @@ public class MuratGameManager : MonoBehaviour
                     {
                         umbrella1.pos.Add(MovePos[i]);
                     }
-                    Destroy(temp,15f);
+                    umbrella1.destroyed = isDestroy;
                     om = 1;
                     break;
                 case 1:
@@ -35,7 +32,7 @@ public class MuratGameManager : MonoBehaviour
                     {
                         umbrella2.pos.Add(MovePos[i]);
                     }
-                    Destroy(temp2, 15f);
+                    umbrella2.destroyed = isDestroy;
                     om = 0;
                     break;
                 default:

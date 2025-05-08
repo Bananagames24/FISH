@@ -19,9 +19,30 @@ public class PlayerColect : MonoBehaviour
     {
         if (collision.transform.tag == "colectable")
         {
-            amountColected++;
+            switch (CheckColect(collision.gameObject))
+            {
+                case 0:
+                    amountColected++;
+                    break;
+                case 1:
+                    break;
+                default:
+                    break;
+            }
             Destroy(collision.gameObject);
         }
+    }
+    private int CheckColect(GameObject Colect)
+    {
+        if (Colect.name=="coin")
+        {
+            return 0;
+        }
+        else if (Colect.name=="")
+        {
+            return 1;
+        }
+        return default;
     }
     public void Death()
     {
