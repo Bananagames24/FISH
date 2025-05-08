@@ -5,6 +5,12 @@ public class PlayerColect : MonoBehaviour
 {
     private int amountColected = 0;
     [SerializeField] private TextMeshProUGUI showColoected;
+    [SerializeField] private GameObject Spawnpoint;
+    Rigidbody rb;
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
     void Update()
     {
         showColoected.text = ""+amountColected;
@@ -19,6 +25,8 @@ public class PlayerColect : MonoBehaviour
     }
     public void Death()
     {
-        Destroy(gameObject);
+        transform.SetPositionAndRotation(Spawnpoint.transform.position, Spawnpoint.transform.rotation);
+        rb.angularVelocity = Vector3.zero;
+        rb.linearVelocity = Vector3.zero;
     }
 }
