@@ -92,12 +92,9 @@ public class PlayerScript : MonoBehaviour
         if (other.CompareTag("Paraplu"))
         {
             transform.parent = other.transform;
-
-
         }
-
-        
     }
+
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Paraplu"))
