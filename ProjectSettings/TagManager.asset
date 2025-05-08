@@ -6,6 +6,7 @@ TagManager:
   tags:
   - colectable
   - Ground
+  - Paraplu
   layers:
   - Default
   - TransparentFX
@@ -13,8 +14,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Ground
+  - ParapluPath
   - 
   - 
   - 

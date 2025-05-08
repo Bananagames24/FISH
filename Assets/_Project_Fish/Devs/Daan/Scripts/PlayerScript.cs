@@ -54,17 +54,14 @@ public class PlayerScript : MonoBehaviour
 
         if (!characterController.isGrounded && speed >= 1f)
         {
-            speed -= 5f * Time.deltaTime;
+            speed -= 4f * Time.deltaTime;
         }
         else
         {
-            if(speed < 10f)
-            {
-                speed += 75f * Time.deltaTime;
-            }
+            speed = 7f;
         }
         
-        if (speed > 10f){ speed = 10f; }
+        if (speed > 7f){ speed = 7f; }
 
             //makes the player move in all directions
             //can only use m.controller.move 1 time in script or the character controller will bug with isgrounded
@@ -87,6 +84,25 @@ public class PlayerScript : MonoBehaviour
         if (_context.performed && characterController.isGrounded)
         {
             jump = true;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Paraplu"))
+        {
+            transform.parent = other.transform;
+
+
+        }
+
+        
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Paraplu"))
+        {
+            transform.parent = null;
         }
     }
 }
